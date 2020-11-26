@@ -11,6 +11,12 @@ git clone https://github.com/reptation/chicken-command-center.git
 python -m pip install -r requirements.txt
 ```
 
+The project was initially created with the following steps:
+```
+python -m django startproject chickencommandcenter
+python manage.py startapp watcher
+```
+
 ## Setting Up the Raspberry Pi
 Enable the camera module:
 ```
