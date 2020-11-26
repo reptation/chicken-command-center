@@ -15,7 +15,7 @@ def get_stream():
     camera.start_preview()
     # Camera warm-up time
     sleep(2)
-    camera.capture(my_stream, 'jpeg')
+    return camera.capture(my_stream, 'jpeg')
 
 def stream(request):
     return StreamingHttpResponse(get_stream())
