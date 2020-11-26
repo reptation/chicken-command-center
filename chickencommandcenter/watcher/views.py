@@ -10,7 +10,7 @@ def index(request):
     return HttpResponse("Hello, world. You're at the watcher index.")
 
 def get_stream():
-    stream = BytesIO()
+    my_stream = BytesIO()
     camera = PiCamera()
     camera.start_preview()
     # Camera warm-up time
