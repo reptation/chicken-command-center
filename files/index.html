@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raspberry Pi Camera</title>
+    <style>
+        html body .page {
+            height: 100%;
+            width: 100%;
+        }
+        video {
+            width: 800px;
+        }
+        .wrapper {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="wrapper">
+        <h1> Raspberry Pi Camera</h1>
+        <video data-dashjs-player autoplay controls type="application/dash+xml"></video>
+    </div>
+</div>
+<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+<script>
+    var player = init();
+    function init() {
+        var video = document.querySelector("video");
+        player = dashjs.MediaPlayer().create();
+        player.initialize(video, "manifest.mpd", true);
+        player.updateSettings({
+            'streaming': {
+                'lowLatencyEnabled': true,
+                'liveDelay': 1,
+                'liveCatchUpMinDrift': 0.05,
+                'liveCatchUpPlaybackRate': 0.5
+            }
+        });
+        return player;
+    }
+</script>
+</body>
+</html>

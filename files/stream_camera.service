@@ -1,0 +1,12 @@
+# /etc/systemd/system/stream_camera.service
+[Unit]
+Description=Camera Streaming Service
+After=network.target rc-local.service
+
+[Service]
+Restart=always
+RestartSec=20s
+ExecStart=ffmpeg -input_format mjpeg -video_size 640x480 -framerate 30 -i /dev/video0 -c:v h264_omx -b:v 4M -f dash -window_size 10 -remove_at_exit 1 -hls_playlist 1 /dev/shm/streaming/manifest.mpd
+
+[Install]
+WantedBy=multi-user.target
