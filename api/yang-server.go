@@ -114,7 +114,7 @@ func main() {
 	return c.SendString("Turning LED off")
     })
 
-    app.Get("clockwise", func(c *fiber.Ctx) error {
+    app.Get("/clockwise", func(c *fiber.Ctx) error {
         if err := rpio.Open(); err != nil {
             fmt.Println(err)
 	    os.Exit(1)
@@ -126,7 +126,8 @@ func main() {
     blu_pin.Output()
     enable_pin.High()
 
-   forward(1, 50) 
+   forward(1, 500) 
+   forward(1, 500) 
        return c.SendString("Running stepper clockwise")
     })
 
