@@ -54,7 +54,7 @@ func forward(delay time.Duration, steps int){
 	for i:=0; i<steps; i++{
 		for j:=0; j<step_count; j++{
 			set_step(seq[j][0], seq[j][1],seq[j][2], seq[j][3])
-			time.Sleep(delay * time.Second)
+			time.Sleep(delay * time.Millisecond)
 		}
 	}
 }
@@ -126,8 +126,7 @@ func main() {
     blu_pin.Output()
     enable_pin.High()
 
-   forward(1, 500) 
-   forward(1, 500) 
+   forward(10, 1000)
        return c.SendString("Running stepper clockwise")
     })
 
