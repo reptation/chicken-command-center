@@ -23,6 +23,8 @@
         <h1> Raspberry Pi Camera</h1>
         <video data-dashjs-player autoplay controls type="application/dash+xml"></video>
     </div>
+    <button onclick="on()">Turn On LED</button>
+    <button onclick="off()">Turn Off LED</button>
 </div>
 <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
 <script>
@@ -41,6 +43,26 @@
         });
         return player;
     }
+
+    async function on() {
+       var domain = window.location.origin;
+       var port = 3000;
+       var url = `${domain}:${port}/on`;
+       var response = await window.fetch(url, {
+           method: 'GET'
+       });
+    }
+
+    async function off() {
+       var domain = window.location.origin;
+       var port = 3000;
+       var url = `${domain}:${port}/off`;
+       var response = await window.fetch(url, {
+           method: 'GET'
+       });
+    }
+
+
 </script>
 </body>
 </html>
